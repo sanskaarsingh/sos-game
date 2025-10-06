@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">SOS</h1>
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div id="welcomeScreen" class="screen active">
+                <div class="welcome-card">
+                    <h2>Welcome to SOS</h2>
+                    <p>A strategic letter-placement game for two players</p>
+                    <div class="button-group">
+                        <button id="createGameBtn" class="btn btn-primary">Create New Game</button>
+                        <button id="joinGameBtn" class="btn btn-secondary">Join Existing Game</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player Setup -->
+            <div id="playerSetup" class="screen">
+                <div class="setup-card">
+                    <h2 id="setupTitle">Enter Your Name</h2>
+                    <div class="input-group">
+                        <input type="text" id="playerName" placeholder="Your name" maxlength="20">
+                        <div id="gameIdInput" class="game-id-input" style="display: none;">
+                            <input type="text" id="joinGameId" placeholder="Game ID" maxlength="6">
+                            <span class="input-hint">Enter the 6-character game ID</span>
+                        </div>
+                    </div>
+                    <button id="startGameBtn" class="btn btn-primary">Start Playing</button>
+                    <button id="backToWelcome" class="btn btn-text">Back</button>
+                </div>
+            </div>
+
+            <!-- Lobby Screen -->
+            <div id="lobbyScreen" class="screen">
+                <div class="lobby-card">
+                    <h2>Game Lobby</h2>
+                    <div class="game-info">
+                        <div class="info-item">
+                            <span class="label">Game ID:</span>
+                            <span id="lobbyGameId" class="value"></span>
+                            <button id="copyGameId" class="btn btn-small">Copy</button>
+                        </div>
+                        <div class="players-list">
+                            <h3>Players</h3>
+                            <div id="playersContainer" class="players-container">
+                                <!-- Players will be added here dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="waitingMessage" class="waiting-message">
+                        <div class="loading-spinner"></div>
+                        <p>Waiting for another player to join...</p>
+                    </div>
+                    <button id="leaveLobby" class="btn btn-secondary">Leave Game</button>
+                </div>
+            </div>
+
+            <!-- Game Screen -->
+            <div id="gameScreen" class="screen">
+                <div class="game-header">
+                    <div class="game-id-display">
+                        Game: <span id="displayGameId"></span>
+                    </div>
+                    <div class="players-info">
+                        <div class="player-card" id="player1Card">
+                            <div class="player-name"></div>
+                            <div class="player-score">0</div>
+                            <div class="player-turn-indicator"></div>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="player-card" id="player2Card">
+                            <div class="player-name"></div>
+                            <div class="player-score">0</div>
+                            <div class="player-turn-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <div class="letter-selection">
+                        <span>Your move:</span>
+                        <div class="letter-buttons">
+                            <button class="letter-btn" data-letter="S">S</button>
+                            <button class="letter-btn" data-letter="O">O</button>
+                        </div>
+                    </div>
+                    <div class="current-turn">
+                        <span id="currentPlayerText"></span>'s turn
+                    </div>
+                </div>
+
+                <div class="game-board-container">
+                    <div id="gameBoard" class="game-board">
+                        <!-- Board will be generated dynamically -->
+                    </div>
+                </div>
+
+                <div class="game-actions">
+                    <button id="leaveGame" class="btn btn-secondary">Leave Game</button>
+                </div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div id="gameOverScreen" class="screen">
+                <div class="game-over-card">
+                    <h2>Game Over</h2>
+                    <div id="winnerMessage" class="winner-message"></div>
+                    <div class="final-scores">
+                        <div class="score-item">
+                            <span id="finalPlayer1Name"></span>
+                            <span id="finalPlayer1Score" class="score-value">0</span>
+                        </div>
+                        <div class="score-item">
+                            <span id="finalPlayer2Name"></span>
+                            <span id="finalPlayer2Score" class="score-value">0</span>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
+                        <button id="backToMenuBtn" class="btn btn-secondary">Main Menu</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Notification System -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
