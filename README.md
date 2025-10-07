@@ -1,18 +1,19 @@
 SOS Multiplayer Game
 ====================
 
-A modern, real-time multiplayer SOS game built with Node.js, Express, and Socket.io. Play the classic letter-placement strategy game with friends across different networks!
+A modern, real-time multiplayer SOS game built with Node.js, Express, and Socket.io. Play the classic letter-placement strategy game with friends, now with sound effects and multiple game modes!
 Live Link: <https://sos-game-43w5.onrender.com/>
 
 Features
 --------
-* Real-time Multiplayer: Play with friends across different networks
-* Modern Dark UI: Sleek dark gray and orange color scheme
-* Responsive Design: Works perfectly on desktop and mobile devices
-* Smooth Animations: Beautiful transitions and hover effects
-* Game Lobby System: Create or join games with unique IDs
-* Score Tracking: Automatic SOS detection and scoring
-* Theme Toggle: Switch between dark and light modes
+* **Real-time Multiplayer**: Play with friends across different networks in a seamless experience.
+* **Dual Game Modes**: Choose between **General Mode** (most points win) or **Simple Mode** (first to score wins).
+* **Immersive Audio**: Features 8-bit sound effects for game actions and a continuous background music loop, with a mute toggle for control.
+* **Rematch System**: Instantly start a new game with the same opponent from the game-over screen.
+* **Dynamic Animations**: Celebratory animations highlight newly formed 'S.O.S' sequences.
+* **Retro 8-Bit Theme**: A girly, pink-inspired retro theme with both light and dark modes.
+* **Game Lobby System**: Create or join games using unique 6-character IDs.
+* **Responsive Design**: Works perfectly on both desktop and mobile devices.
 
 Quick Start
 -----------
@@ -57,36 +58,38 @@ How to Play
 -----------
 
 Game Rules:
-* Players: 2 players
-* Board: 8x8 grid
-* Objective: Create SOS sequences to score points
-* Turns: Players alternate placing 'S' or 'O' on the board
-* Scoring: Form SOS sequences (horizontal, vertical, or diagonal)
-* Bonus: If you form an SOS, you get another turn
-* Winning: Player with most SOS sequences when board is full wins
+* **Players**: 2 players
+* **Board**: 8x8 grid
+* **Objective**: Create SOS sequences to score points
+* **Turns**: Players alternate placing 'S' or 'O' on the board
+* **Scoring**: Form SOS sequences (horizontal, vertical, or diagonal)
+* **Bonus**: If you form an SOS, you get another turn
+* **Winning (General Mode)**: The player with the most 'S.O.S' sequences when the board is full wins.
+* **Winning (Simple Mode)**: The first player to form an 'S.O.S' sequence wins instantly.
 
 Game Flow:
-1. Create Game: Host creates a new game session
-2. Share ID: Host shares the 6-character game ID
-3. Join Game: Second player joins using the game ID
-4. Play: Take turns placing letters and forming SOS sequences
-5. Win: Complete the game when board is full
+1.  **Choose Mode**: Select "General" or "Simple" game mode from the main menu.
+2.  **Create Game**: A host creates a new game session.
+3.  **Share ID**: The host shares the unique 6-character game ID with a friend.
+4.  **Join Game**: The second player uses the game ID to join the lobby.
+5.  **Play**: Once both players are in, the game starts automatically.
+6.  **Rematch**: After the game ends, players can choose to play a rematch.
 
 Project Structure
 -----------------
 sos-game/
 ├── public/
-│   ├── index.html          # Main HTML file
 │   ├── css/
-│   │   └── style.css       # Styles and animations
-│   └── js/
-│       ├── game.js         # Game logic and Socket.io handlers
-│       └── ui.js           # UI interactions and animations
-├── server/
-│   ├── server.js           # Express server and Socket.io setup
-│   └── gameLogic.js        # Game state management
-├── package.json            # Dependencies and scripts
-└── README.md              # This file
+│   │   └── style.css
+│   ├── images/
+│   │   └── (assets)
+│   ├── js/
+│   │   ├── game.js
+│   │   └── ui.js
+│   ├── sounds/
+│   │   └── (assets)
+│   └── index.html
+...
 
 Technology Stack
 ----------------
@@ -102,13 +105,13 @@ Customization
 Changing Colors:
 Modify CSS variables in public/css/style.css:
 :root {
-  --accent-primary: #ff6b35; /* Change to your preferred color */
-  --accent-secondary: #ff8c5a;
+  --player1-color: #FF4081; /* Change to your preferred color */
+  --player2-color: #a388ee;
 }
 
 Board Size:
-Edit in server/server.js:
-this.board = Array(10).fill().map(() => Array(10).fill(null)); // Change to 10x10
+// Edit in server/gameLogic.js:
+this.board = Array(8).fill(null).map(() => Array(8).fill(null)); // Change '8' to desired size
 
 Browser Support
 ---------------
@@ -139,10 +142,9 @@ This project is licensed under the MIT License.
 
 Acknowledgments
 ---------------
-* Game design inspired by classic SOS board game
-* Icons from Twemoji
-* Fonts from Google Fonts (Inter)
-* Deployment platforms: Render, Railway, Vercel
+* Game design inspired by the classic SOS board game.
+* Fonts from Google Fonts ('Press Start 2P').
+* Sound effects and BGM from [Name of Sound Library/Website, e.g., Pixabay, freesound.org].
 
 Support
 -------
