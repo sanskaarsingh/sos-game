@@ -8,13 +8,24 @@
     "dev": "nodemon server/server.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "socket.io": "^4.7.2"
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
   "engines": {
-  "node": ">=14.0.0"
-}
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanskaarsingh/sos-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanskaarsingh/sos-game/issues"
+  },
+  "homepage": "https://github.com/sanskaarsingh/sos-game#readme"
 }
